@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.MyAssets.InGame.Slimes
 {
-    public class SlimeCore : MonoBehaviour, IDamageable
+    public class SlimeCore : MonoBehaviour, IDamageable, IDieable
     {
         private ReactiveProperty<bool> _isDamaged = new ReactiveProperty<bool>(false);
         public ReadOnlyReactiveProperty<bool> IsDamaged { get { return _isDamaged; } }
@@ -90,6 +90,13 @@ namespace Assets.MyAssets.InGame.Slimes
             
             _isDamaged.Value = true;
         }
-        
+
+        /// <summary>
+        /// Slimeを即死させる
+        /// </summary>
+        public void Kill()
+        {
+            _isDead.Value = true;
+        }
     }
 }
