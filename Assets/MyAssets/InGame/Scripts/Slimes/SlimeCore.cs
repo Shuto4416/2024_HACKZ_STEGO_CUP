@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Assets.MyAssets.InGame.Slimes
 {
+    /// <summary>
+    /// スライムのメイン実装
+    /// </summary>
     public class SlimeCore : MonoBehaviour, IDamageable, IDieable
     {
         private ReactiveProperty<bool> _isDamaged = new ReactiveProperty<bool>(false);
@@ -62,7 +65,7 @@ namespace Assets.MyAssets.InGame.Slimes
             _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
 
             _isDamaged
-                .Where(x => x)
+                .Where(_ => _isDamaged.Value)
                 .Subscribe(_ =>
                 {
                     if (_currentSlimeParameter.Value.HitPoint <= 0)
@@ -81,7 +84,7 @@ namespace Assets.MyAssets.InGame.Slimes
         /// </summary>
         public void ApplyDamage()
         {
-            if (_isDamaged.Value)
+            if (_isDamaged.Value || _isDead.Value)
             {
                 return;
             }
