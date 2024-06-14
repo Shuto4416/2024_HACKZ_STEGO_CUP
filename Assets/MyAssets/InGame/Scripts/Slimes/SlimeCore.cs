@@ -6,10 +6,13 @@ using UnityEngine;
 
 namespace Assets.MyAssets.InGame.Slimes
 {
-    public class SlimeCore : MonoBehaviour
+    public class SlimeCore : MonoBehaviour, IDamageable
     {
         private ReactiveProperty<bool> _isDamaged = new ReactiveProperty<bool>(false);
         public ReadOnlyReactiveProperty<bool> IsDamaged { get { return _isDamaged; } }
+        
+        private ReactiveProperty<bool> _isDead = new ReactiveProperty<bool>(false);
+        public ReadOnlyReactiveProperty<bool> IsDead { get { return _isDead; } }
         
         /*
         private IGameStateProvider gameStateProvider;
@@ -29,13 +32,16 @@ namespace Assets.MyAssets.InGame.Slimes
         public ReadOnlyReactiveProperty<SlimeParameters> CurrentSlimeParameter { get { return _currentSlimeParameter; } }
         
         /// <summary>
-        /// プレイヤのパラメータを規定値に戻す
+        /// Slimeのパラメータを規定値に戻す
         /// </summary>
         public void ResetSlimeParameter()
         {
             _currentSlimeParameter.Value = DefaultSlimeParameter;
         }
 
+        /// <summary>
+        /// Slimeのパラメータを変更する
+        /// </summary>
         public void SetSlimeParameter(SlimeParameters parameters)
         {
             _currentSlimeParameter.Value = parameters;
@@ -54,6 +60,36 @@ namespace Assets.MyAssets.InGame.Slimes
             _isInitialize.OnCompleted();
             
             _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
+
+            _isDamaged
+                .Where(x => x)
+                .Subscribe(_ =>
+                {
+                    if (_currentSlimeParameter.Value.HitPoint <= 0)
+                    {
+                        _isDead.Value = true;
+                        return;
+                    }
+                    //1秒後に元の状態に
+                    Observable.Timer(TimeSpan.FromSeconds(1))
+                        .Subscribe(_ => _isDamaged.Value = false);
+                });
         }
+        
+        /// <summary>
+        /// Slimeにダメージを与える
+        /// </summary>
+        public void ApplyDamage()
+        {
+            if (_isDamaged.Value)
+            {
+                return;
+            }
+            
+            _currentSlimeParameter.Value.HitPoint--;
+            
+            _isDamaged.Value = true;
+        }
+        
     }
 }
