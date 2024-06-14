@@ -1,6 +1,6 @@
 using R3;
 
-namespace Assets.MyAssets.InGame.Inputs
+namespace Assets.MyAssets.InGame.Slimes.Inputs
 {
     /// <summary>
     /// インゲームの入力に対するイベント
