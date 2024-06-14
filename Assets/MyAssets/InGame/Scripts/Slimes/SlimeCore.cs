@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Assets.MyAssets.InGame.Slimes
 {
     /// <summary>
-    /// スライムのメイン実装
+    /// Slimeのメイン実装
     /// </summary>
     public class SlimeCore : MonoBehaviour, IDamageable, IDieable
     {
