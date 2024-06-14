@@ -1,8 +1,7 @@
 using System;
-using R3;
-using R3.Triggers;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
+using R3;
+using Assets.MyAssets.InGame.Slimes.Interfaces;
 
 namespace Assets.MyAssets.InGame.Slimes
 {

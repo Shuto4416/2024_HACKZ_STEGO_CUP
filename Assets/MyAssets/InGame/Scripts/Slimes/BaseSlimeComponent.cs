@@ -1,5 +1,5 @@
-using R3;
 using UnityEngine;
+using R3;
 using Assets.MyAssets.InGame.Slimes.Inputs;
 
 namespace Assets.MyAssets.InGame.Slimes
