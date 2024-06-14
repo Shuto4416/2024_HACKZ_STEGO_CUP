@@ -7,7 +7,7 @@ namespace Assets.MyAssets.InGame.Slimes.Inputs
     /// </summary>
     public interface IInGameInputEventProvider
     {
-        ReadOnlyReactiveProperty<float> XMoveDirection { get; }
+        ReadOnlyReactiveProperty<int> XMoveDirection { get; }
         ReadOnlyReactiveProperty<bool> OnSpecialButtonPushed { get; }
         ReadOnlyReactiveProperty<bool> OnJumpButtonPushed { get; }
         ReadOnlyReactiveProperty<bool> PauseButton { get; }
