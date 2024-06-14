@@ -63,6 +63,8 @@ namespace Assets.MyAssets.InGame.Slimes
             
             _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
 
+            this.gameObject.transform.localScale *= DefaultSlimeParameter.Size;
+
             _isDamaged
                 .Where(_ => _isDamaged.Value)
                 .Subscribe(_ =>
