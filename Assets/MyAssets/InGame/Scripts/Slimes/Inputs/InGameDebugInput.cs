@@ -1,7 +1,7 @@
+using System;
+using UnityEngine;
 using R3;
 using R3.Triggers;
-using UnityEngine;
-using System;
 
 namespace Assets.MyAssets.InGame.Slimes.Inputs
 {

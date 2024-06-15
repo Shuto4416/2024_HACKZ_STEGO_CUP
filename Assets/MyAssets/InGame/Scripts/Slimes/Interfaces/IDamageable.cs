@@ -1,4 +1,4 @@
-namespace Assets.MyAssets.InGame.Slimes
+namespace Assets.MyAssets.InGame.Slimes.Interfaces
 {
     public interface IDamageable
     {
