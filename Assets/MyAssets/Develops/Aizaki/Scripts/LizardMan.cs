@@ -66,20 +66,20 @@ public class LizardMan : MonoBehaviour
             if (player.transform.position.x > transform.position.x) //プレイヤーが右側にいる場合
             {
                 transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-                fireParticle.transform.localEulerAngles = new Vector3(0, 0, -20);
+                fireParticle.transform.rotation = Quaternion.Euler( new Vector3(0, 0, -200));
             }
             else //プレイヤーが左側にいる場合
             {
                 transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
-                fireParticle.transform.localEulerAngles = new Vector3(0, 0, 20);
+                fireParticle.transform.rotation = Quaternion.Euler( new Vector3(0, 0, 20));
             }
         }
 
         //火炎放射
-        if (fireCooltimeCount >= fireCooltime && UnityEngine.Random.Range(0, 100) == 77)
+        if (fireCooltimeCount >= fireCooltime && UnityEngine.Random.Range(0, 10) == 7)
         {
             //範囲内で射線が通っているときのみ放射する
-            if (Physics2D.OverlapBox((Vector2)transform.position + new Vector2(transform.localScale.x * -4.4f, -4.4f), new Vector2(4.4f, 4.4f), 0f, 1 << 6))
+            if (Physics2D.OverlapBox((Vector2)transform.position + new Vector2(transform.localScale.x * -4.4f, -4.4f), new Vector2(8.8f, 8.8f), 0f, 1 << 6))
             {
                 Vector2 vec = player.transform.position - transform.position;
                 Ray2D ray = new Ray2D(transform.position, vec.normalized);
