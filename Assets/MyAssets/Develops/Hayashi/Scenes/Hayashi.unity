@@ -997,7 +997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1294121011191115230, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.85
+      value: -2.44
       objectReference: {fileID: 0}
     - target: {fileID: 1294121011191115230, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1037,7 +1037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2852172668420754911, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
       propertyPath: _slimeParameter.Size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2852172668420754911, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
       propertyPath: _slimeParameter.Weight

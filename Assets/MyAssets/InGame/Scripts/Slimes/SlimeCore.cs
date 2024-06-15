@@ -62,27 +62,27 @@ namespace Assets.MyAssets.InGame.Slimes
         public void InitializeSlime(SlimeParameters slimeParameters, SpecialTypes specialTypes)
         {
             DefaultSlimeParameter = slimeParameters;
-        _specialTypes = specialTypes;
-        _isInitialize.OnNext(true);
-        _isInitialize.OnCompleted();
-        
-        _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
+            _specialTypes = specialTypes;
+            _isInitialize.OnNext(true);
+            _isInitialize.OnCompleted();
+            
+            _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
 
-        this.gameObject.transform.localScale *= DefaultSlimeParameter.Size;
-        
-        _isDamaged
-            .Where(_ => _isDamaged.Value)
-            .Subscribe(_ =>
-            {
-                if (_currentSlimeParameter.Value.HitPoint <= 0)
+            this.gameObject.transform.localScale *= DefaultSlimeParameter.Size;
+            
+            _isDamaged
+                .Where(_ => _isDamaged.Value)
+                .Subscribe(_ =>
                 {
-                    _isDead.Value = true;
-                    return;
-                }
-                //1秒後に元の状態に
-                Observable.Timer(TimeSpan.FromSeconds(1))
-                    .Subscribe(_ => _isDamaged.Value = false);
-            });
+                    if (_currentSlimeParameter.Value.HitPoint <= 0)
+                    {
+                        _isDead.Value = true;
+                        return;
+                    }
+                    //1秒後に元の状態に
+                    Observable.Timer(TimeSpan.FromSeconds(1))
+                        .Subscribe(_ => _isDamaged.Value = false);
+                });
         }
         
         

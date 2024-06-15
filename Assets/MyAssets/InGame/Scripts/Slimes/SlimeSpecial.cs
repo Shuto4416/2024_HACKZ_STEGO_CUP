@@ -34,7 +34,8 @@ namespace Assets.MyAssets.InGame.Slimes
                 .Subscribe(_ =>
                 {
                     GameObject specialObject = Instantiate(_slimeSpecials[(int)(SlimeCore.SpecialTypes)], _slimeTransform.position, Quaternion.identity);
-
+                    specialObject.transform.localScale *= CurrentPlayerParameter.CurrentValue.Size;
+                    
                     specialObject.GetComponent<BaseSpecial>().OnInitialize(_xDirection);
                     _canSpecial = false;
                     

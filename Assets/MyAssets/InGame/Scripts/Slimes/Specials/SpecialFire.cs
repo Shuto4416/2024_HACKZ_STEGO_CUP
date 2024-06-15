@@ -10,7 +10,7 @@ namespace Assets.MyAssets.InGame.Slimes.Specials
         [SerializeField]
         private Rigidbody2D _rigidBody2D;
 
-        private float _forcePower = 2f;
+        private float _forcePower = 2.5f;
         
         public override void OnInitialize(float xDirection)
         {
