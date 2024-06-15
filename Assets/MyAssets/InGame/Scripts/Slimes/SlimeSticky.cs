@@ -33,7 +33,6 @@ namespace Assets.MyAssets.InGame.Slimes
             _spring.frequency = 100 / (_viscosity * 100 + 1);
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (_isSticking)

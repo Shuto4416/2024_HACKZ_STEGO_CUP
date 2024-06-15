@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using R3;
 using Assets.MyAssets.InGame.Slimes.Interfaces;
@@ -18,6 +20,8 @@ namespace Assets.MyAssets.InGame.Slimes
         
         private SpecialTypes _specialTypes;
         public SpecialTypes SpecialTypes { get { return _specialTypes; } }
+        
+        List<Rigidbody2D> _rigidBody2Ds;
         
         /*
         private IGameStateProvider gameStateProvider;
@@ -61,6 +65,8 @@ namespace Assets.MyAssets.InGame.Slimes
         /// </summary>
         public void InitializeSlime(SlimeParameters slimeParameters, SpecialTypes specialTypes)
         {
+            _rigidBody2Ds = gameObject.GetComponentsInChildrenWithoutSelf<Rigidbody2D>().ToList();
+            
             DefaultSlimeParameter = slimeParameters;
             _specialTypes = specialTypes;
             _isInitialize.OnNext(true);
@@ -69,6 +75,11 @@ namespace Assets.MyAssets.InGame.Slimes
             _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
 
             this.gameObject.transform.localScale *= DefaultSlimeParameter.Size;
+            
+            foreach (var _rigidBody2D in _rigidBody2Ds)
+            {
+                _rigidBody2D.mass = slimeParameters.Weight;
+            }
             
             _isDamaged
                 .Where(_ => _isDamaged.Value)

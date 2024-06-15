@@ -26,7 +26,6 @@ namespace Assets.MyAssets.InGame.Slimes
         /// <summary>
         /// Move the specified velocity.
         /// </summary>
-        /// <param name="velocity">Velocity.</param>
         public void Move(Vector2 destination, float multiplier, int count = 12, ForceMode2D forceMode = ForceMode2D.Force)
         {
             switch (forceMode)
