@@ -2,11 +2,15 @@ using PlayFab;
 using PlayFab.ClientModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayFabTest : MonoBehaviour
 {
-    public void Start()
+    public static Dictionary<string, string> SaveDatas = new Dictionary<string, string>();
+    public static Dictionary<string, string> DecodingDatas = new Dictionary<string, string>();
+
+    public void Login()
     {
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
         {
@@ -19,11 +23,6 @@ public class PlayFabTest : MonoBehaviour
         SaveCustomId();
         var request = new LoginWithCustomIDRequest { CustomId = CustomId, CreateAccount = true };
         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
-    }
-
-    public void Update()
-    {
-        
     }
 
     const string PLAYFAB_CUSTOM_ID = "PLAYFAB_CUSTOM_ID";
@@ -89,6 +88,6 @@ public class PlayFabTest : MonoBehaviour
             Debug.Log("PlayFab : Got error retrieving user data");
             Debug.Log(error.GenerateErrorReport());
         });
-        return returnData;
+        return returnData.Select(x => { x.Key,x.Value.Value });
     }
 }
