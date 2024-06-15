@@ -25,11 +25,11 @@ namespace Assets.MyAssets.InGame.Slimes
         /// 通れる道などが制限される
         /// </summary>
         public float Size;
-        
+
         /// <summary>
-        /// 攻撃力
-        /// 敵に与えるダメージの量が変わる
+        /// スライムの粘度
+        /// 壁とかにくっつけたりする
         /// </summary>
-        public float AttackPower;
+        public float Viscosity;
     }
 }
