@@ -18,11 +18,6 @@ public class CoreTest : MonoBehaviour
         {
             Debug.Log(_core.CurrentSlimeParameter.CurrentValue.Size);
         });
-
-        _core.IsDamaged
-            .Skip(1).Subscribe(_ => Debug.Log("痛い"));
-        _core.IsDead
-            .Skip(1).Subscribe(_ => Debug.Log("死んだ"));
     }
 
     void Update()

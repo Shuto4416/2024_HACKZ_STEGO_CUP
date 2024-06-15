@@ -3,49 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AddForce : MonoBehaviour
+public class ITIAddForce : MonoBehaviour
 {
     List<Rigidbody2D> rigidbody2Ds;
     List<Transform> transforms;
 
     [SerializeField] GameObject eye;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody2Ds = gameObject.GetComponentsInChildrenWithoutSelf<Rigidbody2D>().ToList();
         transforms = gameObject.GetComponentsInChildrenWithoutSelf<Transform>().ToList();
     }
-
-    float time;
+    
     Vector2 cursorWorldPos;
     Vector3 eyePos;
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-            cursorWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Move(cursorWorldPos, 20f, 10, ForceMode2D.Impulse);
-        }
-
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Move((Vector2)transform.position + new Vector2(0, 10), 10f, 10, ForceMode2D.Impulse);
+            Move((Vector2)transform.position + new Vector2(0, 5), 10, 10, ForceMode2D.Impulse);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            Move((Vector2)transform.position + new Vector2(-5, 0), 10f, 12);
+            Move((Vector2)transform.position + new Vector2(-5, 0), 5, 12);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Move((Vector2)transform.position + new Vector2(0, -5), 10f, 12);
+            Move((Vector2)transform.position + new Vector2(0, -5), 5, 12);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Move((Vector2)transform.position + new Vector2(5, 0), 10f, 12);
+            Move((Vector2)transform.position + new Vector2(5, 0), 5, 12);
         }
 
         /*
@@ -55,17 +45,7 @@ public class AddForce : MonoBehaviour
         */
     }
 
-    void Move(Vector2 destination, float multiplier)
-    {
-        Move(destination, multiplier, 3, ForceMode2D.Force);
-    }
-
-    void Move(Vector2 destination, float multiplier, int count)
-    {
-        Move(destination, multiplier, count, ForceMode2D.Force);
-    }
-
-    void Move(Vector2 destination, float multiplier, int count, ForceMode2D forceMode)
+    void Move(Vector2 destination, float multiplier, int count, ForceMode2D forceMode = ForceMode2D.Force)
     {
         switch (forceMode)
         {
@@ -78,16 +58,5 @@ public class AddForce : MonoBehaviour
             default:
                 break;
         }
-    }
-}
-
-public static class GameObjectExtensions
-{
-    public static T[] GetComponentsInChildrenWithoutSelf<T>(this GameObject self, bool includeInactive = false) where T : Component
-    {
-        return self
-            .GetComponentsInChildren<T>(includeInactive)
-            .Where(c => self != c.gameObject)
-            .ToArray();
     }
 }

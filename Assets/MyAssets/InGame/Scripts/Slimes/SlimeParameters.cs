@@ -31,11 +31,5 @@ namespace Assets.MyAssets.InGame.Slimes
         /// 壁とかにくっつけたりする
         /// </summary>
         public float Viscosity;
-        
-        /// <summary>
-        /// 攻撃力
-        /// 敵に与えるダメージの量が変わる
-        /// </summary>
-        public float AttackPower;
     }
 }

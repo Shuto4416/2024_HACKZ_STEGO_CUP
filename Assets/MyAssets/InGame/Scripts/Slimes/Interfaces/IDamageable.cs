@@ -4,4 +4,9 @@ namespace Assets.MyAssets.InGame.Slimes.Interfaces
     {
         void ApplyDamage();
     }
+    
+    public interface IEnemyDamageable
+    {
+        void ApplyDamage(int damageNum);
+    }
 }

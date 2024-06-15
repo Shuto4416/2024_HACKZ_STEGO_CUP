@@ -1,4 +1,5 @@
 using R3;
+using UnityEngine;
 
 namespace Assets.MyAssets.InGame.Slimes.Inputs
 {
@@ -7,9 +8,8 @@ namespace Assets.MyAssets.InGame.Slimes.Inputs
     /// </summary>
     public interface IInGameInputEventProvider
     {
-        ReadOnlyReactiveProperty<int> XMoveDirection { get; }
+        ReadOnlyReactiveProperty<Vector2> MoveDirection { get; }
         ReadOnlyReactiveProperty<bool> OnSpecialButtonPushed { get; }
-        ReadOnlyReactiveProperty<bool> OnJumpButtonPushed { get; }
         ReadOnlyReactiveProperty<bool> PauseButton { get; }
     }
 }

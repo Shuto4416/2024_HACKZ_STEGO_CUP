@@ -42,6 +42,8 @@ namespace Assets.MyAssets.InGame.Slimes
                 .Subscribe(_ => OnInitialize());
 
             OnStart();
+            
+            Debug.Log(_inGameInputEventProvider);
         }
 
         /// <summary>
