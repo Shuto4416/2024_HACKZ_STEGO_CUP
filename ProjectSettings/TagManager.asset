@@ -8,6 +8,7 @@ TagManager:
   - asteroid
   - SlimeController
   - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -17,6 +18,10 @@ TagManager:
   - UI
   - Player
   - Enemy
+  - Switch
+  - Switch_guard
+  - 
+  - 
   - 
   - 
   - 

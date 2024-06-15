@@ -24,6 +24,7 @@ public class AddForce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetMouseButtonDown(0))
         {
             cursorWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -32,24 +33,26 @@ public class AddForce : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Move((Vector2)transform.position + new Vector2(0, 10), 20f, 10, ForceMode2D.Impulse);
+            Move((Vector2)transform.position + new Vector2(0, 10), 10f, 10, ForceMode2D.Impulse);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            Move((Vector2)transform.position + new Vector2(-5, 0), 15f, 12);
+            Move((Vector2)transform.position + new Vector2(-5, 0), 10f, 12);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Move((Vector2)transform.position + new Vector2(0, -5), 30f, 12);
+            Move((Vector2)transform.position + new Vector2(0, -5), 10f, 12);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Move((Vector2)transform.position + new Vector2(5, 0), 15f, 12);
+            Move((Vector2)transform.position + new Vector2(5, 0), 10f, 12);
         }
 
+        /*
         eyePos.x = transforms.Average(x => x.position.x);
         eyePos.y = transforms.Average(x => x.position.y);
         eye.transform.position = eyePos;
+        */
     }
 
     void Move(Vector2 destination, float multiplier)
@@ -75,8 +78,6 @@ public class AddForce : MonoBehaviour
             default:
                 break;
         }
-        
-
     }
 }
 

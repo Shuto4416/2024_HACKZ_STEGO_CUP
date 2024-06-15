@@ -16,6 +16,9 @@ namespace Assets.MyAssets.InGame.Slimes
         private ReactiveProperty<bool> _isDead = new ReactiveProperty<bool>(false);
         public ReadOnlyReactiveProperty<bool> IsDead { get { return _isDead; } }
         
+        private SpecialTypes _specialTypes;
+        public SpecialTypes SpecialTypes { get { return _specialTypes; } }
+        
         /*
         private IGameStateProvider gameStateProvider;
 
@@ -52,19 +55,21 @@ namespace Assets.MyAssets.InGame.Slimes
         private ReactiveProperty<bool> _isInitialize = new ReactiveProperty<bool>(false);
         public ReadOnlyReactiveProperty<bool> IsInitialize { get { return _isInitialize; } }
         
+
         /// <summary>
         /// プレイや生成後にGameManagerがこれを呼び出して初期化する
         /// </summary>
-        public void InitializeSlime(SlimeParameters slimeParameters)
+        public void InitializeSlime(SlimeParameters slimeParameters, SpecialTypes specialTypes)
         {
             DefaultSlimeParameter = slimeParameters;
+            _specialTypes = specialTypes;
             _isInitialize.OnNext(true);
             _isInitialize.OnCompleted();
             
             _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
 
             this.gameObject.transform.localScale *= DefaultSlimeParameter.Size;
-
+            
             _isDamaged
                 .Where(_ => _isDamaged.Value)
                 .Subscribe(_ =>
@@ -79,6 +84,7 @@ namespace Assets.MyAssets.InGame.Slimes
                         .Subscribe(_ => _isDamaged.Value = false);
                 });
         }
+        
         
         /// <summary>
         /// Slimeにダメージを与える
