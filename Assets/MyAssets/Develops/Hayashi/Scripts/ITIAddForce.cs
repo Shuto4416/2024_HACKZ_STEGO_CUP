@@ -10,35 +10,32 @@ public class ITIAddForce : MonoBehaviour
 
     [SerializeField] GameObject eye;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody2Ds = gameObject.GetComponentsInChildrenWithoutSelf<Rigidbody2D>().ToList();
         transforms = gameObject.GetComponentsInChildrenWithoutSelf<Transform>().ToList();
     }
-
-    float time;
+    
     Vector2 cursorWorldPos;
     Vector3 eyePos;
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Move((Vector2)transform.position + new Vector2(0, 10), 10f, 10, ForceMode2D.Impulse);
+            Move((Vector2)transform.position + new Vector2(0, 5), 10, 10, ForceMode2D.Impulse);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            Move((Vector2)transform.position + new Vector2(-5, 0), 10f, 12);
+            Move((Vector2)transform.position + new Vector2(-5, 0), 5, 12);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Move((Vector2)transform.position + new Vector2(0, -5), 10f, 12);
+            Move((Vector2)transform.position + new Vector2(0, -5), 5, 12);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Move((Vector2)transform.position + new Vector2(5, 0), 10f, 12);
+            Move((Vector2)transform.position + new Vector2(5, 0), 5, 12);
         }
 
         /*
