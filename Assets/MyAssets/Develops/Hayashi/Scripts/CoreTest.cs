@@ -12,8 +12,7 @@ public class CoreTest : MonoBehaviour
     
     void Start()
     {
-        
-        _core.InitializeSlime(_slimeParameter, SpecialTypes.Fire);
+        _core.InitializeSlime(_slimeParameter, SpecialTypes.Water);
         
         _core.CurrentSlimeParameter.Subscribe(_ =>
         {
