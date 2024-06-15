@@ -88,6 +88,6 @@ public class PlayFabTest : MonoBehaviour
             Debug.Log("PlayFab : Got error retrieving user data");
             Debug.Log(error.GenerateErrorReport());
         });
-        return returnData.Select(x => { x.Key,x.Value.Value });
+        return returnData;
     }
 }
