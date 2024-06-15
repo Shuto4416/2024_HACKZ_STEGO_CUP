@@ -20,16 +20,16 @@ public class ZombieWalk : MonoBehaviour
         
         //‰º‚É‘«ê‚ª‚È‚©‚Á‚½‚ç•ûŒü“]Š·
         Ray2D ray = new Ray2D(new Vector2(transform.position.x - transform.localScale.x * 0.5f, transform.position.y - 1.65f), -transform.up);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1f);
-        if (!hit.collider || hit.collider.tag == "Player")
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1f, ~(1 << 6 | 1 << 7));
+        if (!hit.collider)
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
 
         //•Ç‚É“–‚½‚Á‚½‚ç•ûŒü“]Š·
         ray = new Ray2D(new Vector2(transform.position.x - transform.localScale.x * 0.5f, transform.position.y + 0.5f), -transform.up);
-        hit = Physics2D.Raycast(ray.origin, ray.direction, 2f);
-        if (hit.collider && !(hit.collider.gameObject.tag == "Player"))
+        hit = Physics2D.Raycast(ray.origin, ray.direction, 2f, ~(1 << 6 | 1 << 7));
+        if (hit.collider)
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
