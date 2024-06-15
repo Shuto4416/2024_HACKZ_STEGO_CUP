@@ -1,26 +1,25 @@
 using System;
 using UnityEngine;
 using R3;
-using DG.Tweening;
 
 namespace Assets.MyAssets.InGame.Slimes.Specials
 {
     /// <summary>
-    /// 雷属性のスペシャルのクラス
+    /// 風属性のスペシャルのクラス
     /// </summary>
-    public class SpecialThunder : BaseSpecial
+    public class SpecialWind : BaseSpecial
     {
-        private SpecialTypes _specialTypes = SpecialTypes.Thunder;
+        private SpecialTypes _specialTypes = SpecialTypes.Wind;
         [SerializeField]
         private Rigidbody2D _rigidBody2D;
 
-        private float _fadeSeconds = 5f;
+        private float _forcePower = 15f;
         
         public override void OnInitialize(float xDirection)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().DOFade(0, _fadeSeconds);
+            _rigidBody2D.AddForce(new Vector2(xDirection,0F) * _forcePower,ForceMode2D.Impulse);
             
-            Observable.Timer(TimeSpan.FromSeconds(_fadeSeconds))
+            Observable.Timer(TimeSpan.FromSeconds(1.5f))
                 .Subscribe(_ => Destroy(this.gameObject)).AddTo(this);
         }
         
