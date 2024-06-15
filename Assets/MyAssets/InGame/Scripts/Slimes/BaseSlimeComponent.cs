@@ -24,7 +24,7 @@ namespace Assets.MyAssets.InGame.Slimes
         /// <summary>
         /// 現在のSlimeのパラメータ
         /// </summary>
-        protected ReadOnlyReactiveProperty<SlimeParameters> CurrentPlayerParameter
+        protected ReadOnlyReactiveProperty<SlimeParameters> CurrentSlimeParameter
         {
             get
             {
@@ -42,8 +42,6 @@ namespace Assets.MyAssets.InGame.Slimes
                 .Subscribe(_ => OnInitialize());
 
             OnStart();
-            
-            Debug.Log(_inGameInputEventProvider);
         }
 
         /// <summary>
