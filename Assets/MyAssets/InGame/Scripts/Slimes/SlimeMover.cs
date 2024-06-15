@@ -14,20 +14,13 @@ namespace Assets.MyAssets.InGame.Slimes
 
         public ReadOnlyReactiveProperty<bool> IsGrounded { get { return _isGrounded; } }
 
-        private Rigidbody _rigidBody;
-
         private int _inputDirection;
         
         List<Rigidbody2D> rigidbody2Ds;
-        List<Transform> transforms;
 
-        [SerializeField] GameObject eye;
-
-        // Start is called before the first frame update
         protected override void OnInitialize()
         {
             rigidbody2Ds = gameObject.GetComponentsInChildrenWithoutSelf<Rigidbody2D>().ToList();
-            transforms = gameObject.GetComponentsInChildrenWithoutSelf<Transform>().ToList();
         }
 
         /// <summary>
