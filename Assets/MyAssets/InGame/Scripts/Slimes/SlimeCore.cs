@@ -25,6 +25,9 @@ namespace Assets.MyAssets.InGame.Slimes
         
         private float _defaultMultiplier = 5;
         public float DefaultMultiplier { get { return _defaultMultiplier; } }
+
+        private float _viscosity = 0f;
+        public float Viscosity { get { return _viscosity; } }
         
         /*
         private IGameStateProvider gameStateProvider;
@@ -85,6 +88,8 @@ namespace Assets.MyAssets.InGame.Slimes
             {
                 _rigidBody2D.mass = DefaultSlimeParameter.Weight;
             }
+
+            _viscosity = DefaultSlimeParameter.Viscosity;
             
             _isDamaged
                 .Where(_ => _isDamaged.Value)
