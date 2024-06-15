@@ -20,14 +20,11 @@ namespace Assets.MyAssets.InGame.Slimes
 
         [SerializeField] GameObject _eye;
 
-        private float _defaultMultiplier = 5;
-
         protected override void OnInitialize()
         {
             _rigidBody2Ds = gameObject.GetComponentsInChildrenWithoutSelf<Rigidbody2D>().ToList();
             _transforms = gameObject.GetComponentsInChildrenWithoutSelf<Transform>().ToList();
             _slimeStickies = gameObject.GetComponentsInChildrenWithoutSelf<SlimeSticky>().ToList();
-
         }
 
         Vector2 _cursorWorldPos;
@@ -35,10 +32,10 @@ namespace Assets.MyAssets.InGame.Slimes
 
         void Update()
         {
-            var multiplier = _defaultMultiplier;
+            var multiplier = SlimeCore.DefaultMultiplier;
             if (!_slimeCollision.IsGround)
             {
-                multiplier = _defaultMultiplier / 2;
+                multiplier = SlimeCore.DefaultMultiplier / 2;
             }
             
             if (Input.GetKey(KeyCode.A))

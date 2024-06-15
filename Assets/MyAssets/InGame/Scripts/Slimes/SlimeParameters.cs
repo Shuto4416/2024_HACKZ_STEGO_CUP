@@ -18,7 +18,7 @@ namespace Assets.MyAssets.InGame.Slimes
         /// スライムの重量
         /// ジャンプの高さなどに影響する
         /// </summary>
-        public int Weight;
+        public float Weight;
         
         /// <summary>
         /// スライムの大きさ

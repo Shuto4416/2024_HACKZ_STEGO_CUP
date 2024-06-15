@@ -23,6 +23,9 @@ namespace Assets.MyAssets.InGame.Slimes
         
         List<Rigidbody2D> _rigidBody2Ds;
         
+        private float _defaultMultiplier = 5;
+        public float DefaultMultiplier { get { return _defaultMultiplier; } }
+        
         /*
         private IGameStateProvider gameStateProvider;
 
@@ -75,10 +78,12 @@ namespace Assets.MyAssets.InGame.Slimes
             _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
 
             this.gameObject.transform.localScale *= DefaultSlimeParameter.Size;
+
+            _defaultMultiplier /= DefaultSlimeParameter.Weight + 0.5f;
             
             foreach (var _rigidBody2D in _rigidBody2Ds)
             {
-                _rigidBody2D.mass = slimeParameters.Weight;
+                _rigidBody2D.mass = DefaultSlimeParameter.Weight;
             }
             
             _isDamaged
