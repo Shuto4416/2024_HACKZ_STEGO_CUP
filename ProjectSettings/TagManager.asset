@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - ship
+  - asteroid
   - SlimeController
   - Ground
   layers:
@@ -15,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Switch
+  - Switch_guard
   - 
   - 
   - 
