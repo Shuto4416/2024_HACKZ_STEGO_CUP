@@ -89,6 +89,14 @@ namespace Assets.MyAssets.InGame.Slimes
                 _rigidBody2D.mass = DefaultSlimeParameter.Weight;
             }
 
+            this.gameObject.GetComponent<SpriteRenderer>().material.color = SpecialTypes.ToColor();
+
+            foreach (var spriteRenderer in this.gameObject.GetComponentsInChildrenWithoutSelf<Renderer>().ToList())
+            {
+                spriteRenderer.material.color = SpecialTypes.ToColor();
+            }
+            
+
             _viscosity = DefaultSlimeParameter.Viscosity;
             
             _isDamaged

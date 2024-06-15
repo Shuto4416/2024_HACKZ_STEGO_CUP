@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 1682964272150202473}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &1183121195435978598
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 3326931023168854742}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &2889283914372292160
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +819,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 1.2
   m_AngularDrag: 1
   m_GravityScale: 1
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 2793730746621786595}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &3775727286081546737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 4514595602576306683}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &3922733281482109156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,7 +1527,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 0e2220fd212c54d9297cbd6edfc3deee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1549,7 +1549,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a5570ac5aee272c4d8ddda4bca33dca5, type: 3}
-  m_Color: {r: 0, g: 0.9322505, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.9333334, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1631,7 +1631,7 @@ MonoBehaviour:
     HitPoint: 1
     Weight: 1
     Size: 1
-    Viscosity: 1
+    Viscosity: 0
   _specialTypes: 0
 --- !u!114 &5149143647263084822
 MonoBehaviour:
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 4611479183335938760}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &5778108247573104246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,7 +2350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 2743137576662046051}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &7026754929169852407
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,7 +2693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 7821299044138195214}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &7459998027077200527
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,7 +3036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 5371819537696996723}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &7869889553212376530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3379,7 +3379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 429576516863576433}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &7963473194251542945
 GameObject:
   m_ObjectHideFlags: 0
@@ -3722,7 +3722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 4572875700664095202}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &8176212021344444201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4065,7 +4065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 8061839695244573877}
-  _viscosity: 0.5
+  _viscosity: 0.6
 --- !u!1 &8402632478218189978
 GameObject:
   m_ObjectHideFlags: 0
@@ -4408,4 +4408,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spring: {fileID: 4821629916752213096}
-  _viscosity: 0.5
+  _viscosity: 0.6
