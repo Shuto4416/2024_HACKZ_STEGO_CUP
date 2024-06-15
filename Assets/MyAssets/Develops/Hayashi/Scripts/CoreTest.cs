@@ -8,28 +8,16 @@ public class CoreTest : MonoBehaviour
     private SlimeCore _core;
     
     [SerializeField]
-    private SlimeParameters SlimeParameter;
+    private SlimeParameters _slimeParameter;
     
     void Start()
     {
-        _core.InitializeSlime(SlimeParameter);
-
+        
+        _core.InitializeSlime(_slimeParameter, SpecialTypes.Fire);
+        
         _core.CurrentSlimeParameter.Subscribe(_ =>
         {
             Debug.Log(_core.CurrentSlimeParameter.CurrentValue.Size);
         });
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _core.ApplyDamage();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _core.Kill();
-        }
     }
 }
