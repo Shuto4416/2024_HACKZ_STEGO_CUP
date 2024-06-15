@@ -6,18 +6,13 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-
-/// <summary>
-/// タイトル画面におけるボタンの動きを管理するクラス
-/// </summary>
-public class Button : MonoBehaviour
+public class DecisionButton : MonoBehaviour
 {
     float ExpandingScale = 1.1f;
     float ShrinkScale = 1f;
     float ScaleChangeTime = 0.5f;
     [SerializeField] private SCENES scene;
-    [SerializeField] private Button StartButton;
-    [SerializeField] private Button MaterialButton;
+    [SerializeField] private DecisionButton decisionButton;
     [SerializeField] private Image SceneImage;
     [SerializeField] EventSystem eventSystem;
     GameObject selectedObject;
@@ -28,9 +23,7 @@ public class Button : MonoBehaviour
 
     void Start()
     {
-        Color color = SceneImage.color;
-        color.a = 0f;
-        SceneImage.color = color;
+        SceneImage.DOFade(0f,1f);
     }
 
     public enum SCENES
@@ -60,20 +53,14 @@ public class Button : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             selectedObject = eventSystem.currentSelectedGameObject.gameObject;
-            if(selectedObject == StartButton.gameObject)
+            if(selectedObject == decisionButton.gameObject)
             {
-                StartButton.StartOnClicked();
-            }
-            else if(selectedObject == MaterialButton.gameObject)
-            {
-                MaterialButton.MaterialOnClicked();
+                decisionButton.OnClicked();
             }
         }
     }
-    /// <summary>
-    ///
-    /// </summary>
-    public void StartOnClicked()
+
+    public void OnClicked()
     {        
         transform.DOScale(ExpandingScale,ScaleChangeTime)
         .SetEase(Ease.OutElastic)
@@ -89,13 +76,5 @@ public class Button : MonoBehaviour
                 });
             });
         });
-    }
-
-    public void MaterialOnClicked()
-    {
-        transform.DOScale(ExpandingScale,ScaleChangeTime)
-        .SetEase(Ease.OutElastic)
-        .OnComplete(() => transform.DOScale(ShrinkScale,ScaleChangeTime))
-        .OnComplete(() => SceneManager.LoadScene($"{scene}"));
     }
 }
