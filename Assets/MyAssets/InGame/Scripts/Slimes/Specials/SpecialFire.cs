@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
-using Assets.MyAssets.InGame.Slimes.Inputs;
 using R3;
 
 namespace Assets.MyAssets.InGame.Slimes.Specials
 {
+    /// <summary>
+    /// 炎属性のスペシャルのクラス
+    /// </summary>
     public class SpecialFire : BaseSpecial
     {
         [SerializeField]
