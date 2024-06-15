@@ -8,33 +8,18 @@ public class CoreTest : MonoBehaviour
     private SlimeCore _core;
     
     [SerializeField]
-    private SlimeParameters SlimeParameter;
+    private SlimeParameters _slimeParameter;
+
+    [SerializeField]
+    private SpecialTypes _specialTypes;
     
     void Start()
     {
-        _core.InitializeSlime(SlimeParameter);
-
+        _core.InitializeSlime(_slimeParameter, _specialTypes);
+        
         _core.CurrentSlimeParameter.Subscribe(_ =>
         {
             Debug.Log(_core.CurrentSlimeParameter.CurrentValue.Size);
         });
-
-        _core.IsDamaged
-            .Skip(1).Subscribe(_ => Debug.Log("痛い"));
-        _core.IsDead
-            .Skip(1).Subscribe(_ => Debug.Log("死んだ"));
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _core.ApplyDamage();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _core.Kill();
-        }
     }
 }
