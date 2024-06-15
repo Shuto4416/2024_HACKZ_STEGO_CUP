@@ -8,6 +8,6 @@ namespace Assets.MyAssets.InGame.Slimes.Specials
     /// </summary>
     public abstract class BaseSpecial : MonoBehaviour
     {
-        public abstract void OnInitialize(IInGameInputEventProvider inGameInputEventProvider);
+        public abstract void OnInitialize(float xDirection);
     }
 }
