@@ -1019,6 +1019,22 @@ PrefabInstance:
       propertyPath: _slimeParameter.Viscosity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3812189024337500944, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812189024337500944, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812189024337500944, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812189024337500944, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e2220fd212c54d9297cbd6edfc3deee, type: 2}
     - target: {fileID: 3905142984165498354, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
       propertyPath: _viscosity
       value: 1
