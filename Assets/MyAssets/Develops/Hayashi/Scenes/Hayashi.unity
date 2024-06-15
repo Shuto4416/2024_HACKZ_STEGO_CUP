@@ -955,6 +955,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 125625651229530984, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215849709683935477, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1294121011191115230, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2
@@ -995,9 +1003,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2670247806831516358, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852172668420754911, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _specialTypes
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905142984165498354, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3922733281482109156, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
       propertyPath: m_Name
       value: StickeySlime
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965562306437861546, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524329889497911711, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640726327960055903, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910480631005196107, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566416992056817733, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385464498070414503, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756593743571074426, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8853149447596885814, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: _viscosity
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

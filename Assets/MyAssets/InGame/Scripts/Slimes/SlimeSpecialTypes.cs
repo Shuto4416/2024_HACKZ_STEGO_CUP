@@ -54,7 +54,7 @@ namespace Assets.MyAssets.InGame.Slimes
                 case SpecialTypes.Water:
                     return Color.cyan;
                 case SpecialTypes.Fire:
-                    return Color.magenta;
+                    return Color.red;
                 case SpecialTypes.Thunder:
                     return Color.yellow;
                 case SpecialTypes.Wind:
