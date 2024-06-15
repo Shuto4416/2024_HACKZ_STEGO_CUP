@@ -10,6 +10,12 @@ namespace Assets.MyAssets.Common.Scripts.Scenes
         {
             
         }
+        
+        public async void PassMakeSlimeToInGame(string gameData)
+        {
+            await Task.Delay(3000);
+            var nextScene = await SceneLoader.Load<Result>("Result");
+            nextScene.SetArguments(gameData);
+        }
     }
-
 }
