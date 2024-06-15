@@ -3,6 +3,7 @@
 ### ゲームについて
 #### タイトル
 錬成したらスライムだった件
+![錬スラ](https://github.com/Conken-NitKit/2024_HACKZ_STEGO_CUP/assets/83874472/ef98fbc1-7f46-4020-9bc2-97ae592db025)
 
 #### 概要
 スライム錬成系横スクロールアクションゲーム。
