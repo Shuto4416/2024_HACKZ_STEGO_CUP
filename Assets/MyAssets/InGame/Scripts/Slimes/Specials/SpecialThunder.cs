@@ -1,25 +1,26 @@
 using System;
 using UnityEngine;
 using R3;
+using DG.Tweening;
 
 namespace Assets.MyAssets.InGame.Slimes.Specials
 {
     /// <summary>
     /// 水属性のスペシャルのクラス
     /// </summary>
-    public class SpecialWater : BaseSpecial
+    public class SpecialThunder : BaseSpecial
     {
-        private SpecialTypes _specialTypes = SpecialTypes.Water;
+        private SpecialTypes _specialTypes = SpecialTypes.Thunder;
         [SerializeField]
         private Rigidbody2D _rigidBody2D;
 
-        private float _forcePower = 5f;
+        private float _fadeSeconds = 5f;
         
         public override void OnInitialize(float xDirection)
         {
-            _rigidBody2D.AddForce(new Vector2(xDirection,0F) * _forcePower,ForceMode2D.Impulse);
+            this.gameObject.GetComponent<SpriteRenderer>().DOFade(0, _fadeSeconds);
             
-            Observable.Timer(TimeSpan.FromSeconds(0.5))
+            Observable.Timer(TimeSpan.FromSeconds(_fadeSeconds))
                 .Subscribe(_ => Destroy(this.gameObject)).AddTo(this);
         }
         
