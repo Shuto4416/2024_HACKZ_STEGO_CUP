@@ -1,13 +1,12 @@
 using System;
-using R3;
-using R3.Triggers;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
+using R3;
+using Assets.MyAssets.InGame.Slimes.Interfaces;
 
 namespace Assets.MyAssets.InGame.Slimes
 {
     /// <summary>
-    /// スライムのメイン実装
+    /// Slimeのメイン実装
     /// </summary>
     public class SlimeCore : MonoBehaviour, IDamageable, IDieable
     {
@@ -63,6 +62,8 @@ namespace Assets.MyAssets.InGame.Slimes
             _isInitialize.OnCompleted();
             
             _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
+
+            this.gameObject.transform.localScale *= DefaultSlimeParameter.Size;
 
             _isDamaged
                 .Where(_ => _isDamaged.Value)
