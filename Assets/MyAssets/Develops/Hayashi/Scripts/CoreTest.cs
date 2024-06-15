@@ -9,11 +9,13 @@ public class CoreTest : MonoBehaviour
     
     [SerializeField]
     private SlimeParameters _slimeParameter;
+
+    [SerializeField]
+    private SpecialTypes _specialTypes;
     
     void Start()
     {
-        
-        _core.InitializeSlime(_slimeParameter, SpecialTypes.Fire);
+        _core.InitializeSlime(_slimeParameter, _specialTypes);
         
         _core.CurrentSlimeParameter.Subscribe(_ =>
         {
