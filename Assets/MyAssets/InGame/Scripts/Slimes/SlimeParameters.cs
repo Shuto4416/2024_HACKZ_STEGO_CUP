@@ -25,6 +25,12 @@ namespace Assets.MyAssets.InGame.Slimes
         /// 通れる道などが制限される
         /// </summary>
         public float Size;
+
+        /// <summary>
+        /// スライムの粘度
+        /// 壁とかにくっつけたりする
+        /// </summary>
+        public float Viscosity;
         
         /// <summary>
         /// 攻撃力
