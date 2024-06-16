@@ -101,14 +101,13 @@ namespace Assets.MyAssets.MakeSlime
             {
                 reels.Insert(0, reels[2]);
                 reels.RemoveAt(3);
-                
                 slimeParametersList.Insert(0, slimeParametersList[2]);
                 slimeParametersList.RemoveAt(3);
             }
             else
             {
-                reels.Add(reels[0]);
                 reels.RemoveAt(0);
+                reels.Add(reels[0]);
                 slimeParametersList.Add(slimeParametersList[0]);
                 slimeParametersList.RemoveAt(0);
             }
@@ -144,6 +143,7 @@ namespace Assets.MyAssets.MakeSlime
             else
             {
                 reels.Add(reels[0]);
+                reels.RemoveAt(0);
                 specialTypesList.Add(specialTypesList[0]);
                 specialTypesList.RemoveAt(0);
             }
