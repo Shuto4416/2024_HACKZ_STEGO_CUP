@@ -71,12 +71,27 @@ namespace Assets.MyAssets.InGame.GameManagers
         private void MainGame()
         {
             _core.IsDead
+                .Skip(1)
                 .Subscribe(_ =>
                 {
                     _timeManager.StopCountDown();
                     _currentState.Value = GameState.GameOver;
                 });
 
+            _core.IsClear
+                .Skip(1)
+                .Subscribe(_ =>
+                {
+                    _timeManager.StopCountDown();
+                    _currentState.Value = GameState.Clear;
+                });
+
+            _timeManager.GameCountDownSecond
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                });
+            
             _timeManager.GameCountDownSecond
                 .Where(x => x <= 0)
                 .Subscribe(_ =>
@@ -85,17 +100,18 @@ namespace Assets.MyAssets.InGame.GameManagers
                     _currentState.Value = GameState.GameOver;
                 });
             
+            
             _timeManager.StartGameCountDown();
         }
 
         private void Clear()
         {
-            
+            Debug.Log("クリア");
         }
         
         private void GameOver()
         {
-            
+            Debug.Log("ゲームオーバー");
         }
     }
 }
