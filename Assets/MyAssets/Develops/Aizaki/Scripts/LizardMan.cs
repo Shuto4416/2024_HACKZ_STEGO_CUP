@@ -3,6 +3,7 @@ using R3;
 using R3.Triggers;
 using System;
 using System.Security.Cryptography;
+using Assets.MyAssets.InGame.Slimes;
 
 public class LizardMan : MonoBehaviour
 {
@@ -56,7 +57,6 @@ public class LizardMan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Condition);
         sliceCooltimeCount += Time.deltaTime;
         fireCooltimeCount += Time.deltaTime;
         if (Condition != 0) return;
@@ -100,9 +100,6 @@ public class LizardMan : MonoBehaviour
             Ray2D ray = new Ray2D(new Vector2(transform.position.x - transform.localScale.x * 1.2f, transform.position.y - 2f), -transform.up);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1f, ~(1 << 6 | 1 << 7));
 
-            //rayÇâ¬éãâª
-            Debug.DrawRay(ray.origin, ray.direction * 1.2f, Color.green, 0.015f);
-
             if (hit.collider)
             {
                 Condition = 2;
@@ -132,17 +129,22 @@ public class LizardMan : MonoBehaviour
 
     public void OnSlice()
     {
+        sliceCollider.enabled = true;
         if (transform.localScale.x >= 0)
         {
             sliceParticleL.Play();
         }
         else
         {
-            sliceParticleR.Play();
+            sliceParticleL.Play();
         }
         Observable.Timer(TimeSpan.FromSeconds(0.7)).Take(1).Subscribe(_ =>
         {
             Condition = 0;
+        });
+        Observable.Timer(TimeSpan.FromSeconds(0.1f)).Take(1).Subscribe(_ =>
+        {
+            sliceCollider.enabled = false;
         });
     }
 
@@ -155,6 +157,11 @@ public class LizardMan : MonoBehaviour
     {
         
         fireParticle.Play();
+        fireCollider.enabled = true; 
+        Observable.Timer(TimeSpan.FromSeconds(0.8f)).Take(1).Subscribe(_ =>
+        {
+            fireCollider.enabled = false;
+        });
         Observable.Timer(TimeSpan.FromSeconds(1.45f)).Take(1).Subscribe(_ =>
         {
             Condition = 0;
@@ -198,22 +205,15 @@ public class LizardMan : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Collision");
-        if (collision.gameObject.tag != "Player") return;
         if (fireCollider.enabled)
         {
             fireCollider.enabled = false;
-            {
-
-            }
         }
         if (sliceCollider.enabled)
         {
             sliceCollider.enabled = false;
-            if (isDamage)
-            {
-                //É_ÉÅÅ[ÉWèàóù
-            }
         }
+        Debug.Log("Hit");
+        collision.gameObject.GetComponent<SlimeCore>().ApplyDamage();
     }
 }
