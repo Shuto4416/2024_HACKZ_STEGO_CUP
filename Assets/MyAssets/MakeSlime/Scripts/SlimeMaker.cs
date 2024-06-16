@@ -1,16 +1,23 @@
+using Assets.MyAssets.InGame.Slimes;
 using UnityEngine;
 
-public class SlimeMaker : MonoBehaviour
+namespace Assets.MyAssets.MakeSlime
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    /// <summary>
+    /// 
+    /// </summary>
+    public class SlimeMaker : MonoBehaviour
     {
-        
-    }
+        private SlimeParameters _leftReel;
 
-    // Update is called once per frame
-    void Update()
-    {
+        private SlimeParameters _centerReel;
+
+        private SlimeParameters _totalParameter;
+
+        private void hoge()
+        {
+            _totalParameter = new SlimeParameters(_leftReel.Weight +_centerReel.Weight, _leftReel.Size +_centerReel.Size, _leftReel.Viscosity +_centerReel.Viscosity);
+        }
         
     }
 }
