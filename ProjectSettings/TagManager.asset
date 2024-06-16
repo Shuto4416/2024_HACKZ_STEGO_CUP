@@ -12,6 +12,7 @@ TagManager:
   - SlimeMaterial
   - SlimeGem
   - pusher
+  - Gem
   layers:
   - Default
   - TransparentFX

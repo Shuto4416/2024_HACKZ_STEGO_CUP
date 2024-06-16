@@ -72,14 +72,6 @@ namespace Assets.MyAssets.InGame.GameManagers
 
         private void MainGame()
         {
-            _core.IsDead
-                .Skip(1)
-                .Subscribe(_ =>
-                {
-                    _timeManager.StopCountDown();
-                    _currentState.Value = GameState.GameOver;
-                });
-
             _core.IsClear
                 .Skip(1)
                 .Subscribe(_ =>
@@ -87,6 +79,15 @@ namespace Assets.MyAssets.InGame.GameManagers
                     _timeManager.StopCountDown();
                     _currentState.Value = GameState.Clear;
                 });
+            
+            _core.IsDead
+                .Skip(1)
+                .Subscribe(_ =>
+                {
+                    _timeManager.StopCountDown();
+                    _currentState.Value = GameState.GameOver;
+                });
+            
 
             _timeManager.GameCountDownSecond
                 .Subscribe(x =>
