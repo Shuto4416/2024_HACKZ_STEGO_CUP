@@ -56,7 +56,7 @@ namespace Assets.MyAssets.InGame.GameManagers
         
         private IEnumerator InitCoroutine()
         {
-            _core.InitializeSlime(new SlimeParameters(3,_inGame.Weight,_inGame.Size,_inGame.Viscosity), _inGame.SpecialTypes);
+            _core.InitializeSlime(new SlimeParameters(_inGame.Weight,_inGame.Size,_inGame.Viscosity), _inGame.SpecialTypes);
             
             yield return null;
             

@@ -12,7 +12,7 @@ namespace Assets.MyAssets.InGame.Slimes
         /// スライムのヒットポイント
         /// 敵の攻撃を受けると1ずつ減っていく
         /// </summary>
-        public int HitPoint;
+        public int HitPoint = 3;
         
         /// <summary>
         /// スライムの重量
@@ -32,9 +32,8 @@ namespace Assets.MyAssets.InGame.Slimes
         /// </summary>
         public float Viscosity;
 
-        public SlimeParameters(int HitPoint, float Weight, float Size, float Viscosity)
+        public SlimeParameters(float Weight, float Size, float Viscosity)
         {
-            this.HitPoint = HitPoint;
             this.Weight = Weight;
             this.Size = Size;
             this.Viscosity = Viscosity;

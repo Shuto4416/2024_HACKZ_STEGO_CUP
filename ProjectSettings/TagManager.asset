@@ -9,6 +9,8 @@ TagManager:
   - SlimeController
   - Enemy
   - Ground
+  - SlimeMaterial
+  - SlimeGem
   - pusher
   layers:
   - Default
@@ -22,10 +24,6 @@ TagManager:
   - Switch
   - Switch_guard
   - Pusher
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
