@@ -9,7 +9,7 @@ namespace Assets.MyAssets.InGame.GameManagers
     /// </summary>
     public class TimeManager : MonoBehaviour
     {
-        [SerializeField] private ReactiveProperty<int> _gameCountDownSecond = new ReactiveProperty<int>(0);
+        [SerializeField] private ReactiveProperty<int> _gameCountDownSecond = new ReactiveProperty<int>(300);
 
         /// <summary>
         /// ゲームのカウントダウン

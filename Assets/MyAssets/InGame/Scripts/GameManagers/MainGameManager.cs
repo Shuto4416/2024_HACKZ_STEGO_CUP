@@ -38,20 +38,23 @@ namespace Assets.MyAssets.InGame.GameManagers
                     StartCoroutine(InitCoroutine());
                     break;
                 case GameState.Ready:
-                    //Ready();
+                    Ready();
                     break;
                 case GameState.Game:
-                    //MainGame();
+                    MainGame();
                     break;
-                case GameState.Finish:
-                    //Finish();
+                case GameState.Clear:
+                    Clear();
+                    break;
+                case GameState.GameOver:
+                    GameOver();
                     break;
                 default:
                     break;
             }
         }
         
-        IEnumerator InitCoroutine()
+        private IEnumerator InitCoroutine()
         {
             _core.InitializeSlime(new SlimeParameters(3,_inGame.Weight,_inGame.Size,_inGame.Viscosity), _inGame.SpecialTypes);
             
@@ -60,6 +63,39 @@ namespace Assets.MyAssets.InGame.GameManagers
             _currentState.Value = GameState.Ready;
         }
 
+        private void Ready()
+        {
+            _currentState.Value = GameState.Game;
+        }
 
+        private void MainGame()
+        {
+            _core.IsDead
+                .Subscribe(_ =>
+                {
+                    _timeManager.StopCountDown();
+                    _currentState.Value = GameState.GameOver;
+                });
+
+            _timeManager.GameCountDownSecond
+                .Where(x => x <= 0)
+                .Subscribe(_ =>
+                {
+                    _timeManager.StopCountDown();
+                    _currentState.Value = GameState.GameOver;
+                });
+            
+            _timeManager.StartGameCountDown();
+        }
+
+        private void Clear()
+        {
+            
+        }
+        
+        private void GameOver()
+        {
+            
+        }
     }
 }

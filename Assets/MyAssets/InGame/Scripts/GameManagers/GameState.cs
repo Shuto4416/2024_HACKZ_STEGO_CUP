@@ -8,7 +8,8 @@ namespace Assets.MyAssets.InGame.GameManagers
         Initialization,
         Ready,
         Game,
-        Finish
+        Clear,
+        GameOver
     }
     
     [Serializable]
