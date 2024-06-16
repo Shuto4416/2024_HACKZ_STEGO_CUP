@@ -9,6 +9,8 @@ TagManager:
   - SlimeController
   - Enemy
   - Ground
+  - SlimeMaterial
+  - SlimeGem
   layers:
   - Default
   - TransparentFX
@@ -20,10 +22,6 @@ TagManager:
   - Enemy
   - Switch
   - Switch_guard
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
