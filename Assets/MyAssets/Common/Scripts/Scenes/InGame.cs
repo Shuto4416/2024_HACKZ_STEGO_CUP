@@ -6,12 +6,19 @@ namespace Assets.MyAssets.Common.Scripts.Scenes
 {
     public class InGame : MonoBehaviour
     {
+        [SerializeField]
         private float _weight;
         public float Weight => _weight;
+        
+        [SerializeField]
         private float _size;
         public float Size => _size;
+        
+        [SerializeField]
         private float _viscosity;
         public float Viscosity => _viscosity;
+        
+        [SerializeField]
         private SpecialTypes _specialTypes;
         public SpecialTypes SpecialTypes => _specialTypes;
         

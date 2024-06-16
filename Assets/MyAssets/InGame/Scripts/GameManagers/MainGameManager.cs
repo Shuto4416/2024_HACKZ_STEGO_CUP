@@ -16,11 +16,12 @@ namespace Assets.MyAssets.InGame.GameManagers
         
         [SerializeField]
         private SlimeCore _core;
-
+        
         private Common.Scripts.Scenes.InGame _inGame;
         
         void Start()
         {
+            _inGame = GetComponent<Common.Scripts.Scenes.InGame>();
             _timeManager = GetComponent<TimeManager>();
             
             _currentState.Subscribe(state =>
@@ -52,7 +53,7 @@ namespace Assets.MyAssets.InGame.GameManagers
         
         IEnumerator InitCoroutine()
         {
-            //_core.InitializeSlime(_slimeParameter, _inGame.SpecialTypes);
+            _core.InitializeSlime(new SlimeParameters(3,_inGame.Weight,_inGame.Size,_inGame.Viscosity), _inGame.SpecialTypes);
             
             yield return null;
             
