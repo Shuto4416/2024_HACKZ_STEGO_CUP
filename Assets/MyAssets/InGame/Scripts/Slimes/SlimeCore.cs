@@ -18,6 +18,9 @@ namespace Assets.MyAssets.InGame.Slimes
         private ReactiveProperty<bool> _isDead = new ReactiveProperty<bool>(false);
         public ReadOnlyReactiveProperty<bool> IsDead { get { return _isDead; } }
         
+        private ReactiveProperty<bool> _isClear = new ReactiveProperty<bool>(false);
+        public ReadOnlyReactiveProperty<bool> IsClear { get { return _isClear; } }
+        
         private SpecialTypes _specialTypes;
         public SpecialTypes SpecialTypes { get { return _specialTypes; } }
         
@@ -37,6 +40,11 @@ namespace Assets.MyAssets.InGame.Slimes
             get { return gameStateProvider.CurrentGameState; }
         }
         */
+
+        public void ClearGame()
+        {
+            _isClear.Value = true;
+        }
         
         private SlimeParameters DefaultSlimeParameter;
         private ReactiveProperty<SlimeParameters> _currentSlimeParameter;
