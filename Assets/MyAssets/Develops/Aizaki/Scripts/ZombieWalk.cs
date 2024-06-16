@@ -1,6 +1,5 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class ZombieWalk : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class ZombieWalk : MonoBehaviour
         rb.MovePosition(new Vector2(transform.position.x - transform.localScale.x / 50f, transform.position.y - 0.01f));
 
         
-        //‰º‚É‘«ê‚ª‚È‚©‚Á‚½‚ç•ûŒü“]Š·
+        //ï¿½ï¿½ï¿½É‘ï¿½ï¿½ê‚ªï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½
         Ray2D ray = new Ray2D(new Vector2(transform.position.x - transform.localScale.x * 0.5f, transform.position.y - 1.65f), -transform.up);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1f, ~(1 << 6 | 1 << 7));
         if (!hit.collider)
@@ -26,7 +25,7 @@ public class ZombieWalk : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
 
-        //•Ç‚É“–‚½‚Á‚½‚ç•ûŒü“]Š·
+        //ï¿½Ç‚É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½
         ray = new Ray2D(new Vector2(transform.position.x - transform.localScale.x * 0.5f, transform.position.y + 0.5f), -transform.up);
         hit = Physics2D.Raycast(ray.origin, ray.direction, 2f, ~(1 << 6 | 1 << 7));
         if (hit.collider)
