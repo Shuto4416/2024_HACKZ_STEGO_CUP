@@ -3,7 +3,7 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    bool button;
+    public bool button = false;
     void Start()
     {
         
@@ -15,13 +15,8 @@ public class Switch : MonoBehaviour
         
     }
 
-    void FixedUpdate()
-    {
-        button = false;
-    }
-
     void OnCollisionStay2D(Collision2D other)
     {
-        button = true;
+        if(other.gameObject.CompareTag("pusher")) button = true;
     }
 }

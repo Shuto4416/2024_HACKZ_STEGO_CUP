@@ -9,6 +9,7 @@ TagManager:
   - SlimeController
   - Enemy
   - Ground
+  - pusher
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Enemy
   - Switch
   - Switch_guard
-  - 
+  - Pusher
   - 
   - 
   - 
