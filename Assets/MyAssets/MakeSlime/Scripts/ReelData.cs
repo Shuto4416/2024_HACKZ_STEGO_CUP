@@ -166,9 +166,15 @@ namespace Assets.MyAssets.MakeSlime
             }
         }
         
-        public SlimeParameters GetReelSlimeParametersData(SlimeParameters left,SlimeParameters center)
+        public SlimeParameters GetReelSlimeParametersData()
         {
+            var left = _leftReelSlimeParameters[0];
+            var center = _centerReelSlimeParameters[0];
             return new SlimeParameters(left.Weight + center.Weight,left.Size + center.Size,left.Viscosity + center.Viscosity);
+        }
+        public SpecialTypes GetReelSpecialTypesData()
+        {
+            return _rightReelSpecialTypes[0];
         }
     }
 }
