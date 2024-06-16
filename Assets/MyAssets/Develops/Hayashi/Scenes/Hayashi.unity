@@ -913,6 +913,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2137702936}
   - component: {fileID: 2137702939}
+  - component: {fileID: 2137702941}
+  - component: {fileID: 2137702940}
+  - component: {fileID: 2137702942}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -947,6 +950,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ba00979a01d436d9f7902a7a1f8caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2137702940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137702935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ee92491cfdb479eaa724b558e317a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2137702941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137702935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9b55e99eaa5418cb79ad91ef04f597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _core: {fileID: 6462922251303312644}
+--- !u!114 &2137702942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137702935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3c8b95876124f8ba250c8ce0c5057e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weight: 1
+  _size: 1
+  _viscosity: 1
+  _specialTypes: 1
 --- !u!1001 &6462922251303312641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,6 +1039,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2852172668420754911, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3922733281482109156, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
       propertyPath: m_Name
       value: StickeySlime
@@ -1002,26 +1050,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3922733281482109156, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6462922251303312643}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
---- !u!1 &6462922251303312642 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3922733281482109156, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
+--- !u!114 &6462922251303312644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4954027999524316397, guid: 08a9c4e3b4f454a47a89aee8a6daa3a7, type: 3}
   m_PrefabInstance: {fileID: 6462922251303312641}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6462922251303312643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6462922251303312642}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f5f701154c954a7c91c2b37da0b59fd, type: 3}
+  m_Script: {fileID: 11500000, guid: e3ba00979a01d436d9f7902a7a1f8caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
