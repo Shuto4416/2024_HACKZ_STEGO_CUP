@@ -18,7 +18,13 @@ public class Button : MonoBehaviour
     [SerializeField] private SCENES scene;
     [SerializeField] private Button StartButton;
     [SerializeField] private Button MaterialButton;
-    [SerializeField] private Image SceneImage;
+    //[SerializeField] private Image SceneImage;
+    [SerializeField] private Image GlasslandImage;
+    [SerializeField] private Image MountainImage1;
+    [SerializeField] private Image MountainImage2;
+    [SerializeField] private Image GlassImage;
+    [SerializeField] private Image SlimeImage;
+    [SerializeField] private Image SkyImage;
     [SerializeField] EventSystem eventSystem;
     GameObject selectedObject;
     GameObject currentSelectedGameObject = null;
@@ -28,9 +34,16 @@ public class Button : MonoBehaviour
 
     void Start()
     {
-        Color color = SceneImage.color;
+        var sequence = DOTween.Sequence();
+            sequence.Append(SlimeImage.transform.DOLocalMove(new Vector3(0f,900f,0f),1f));
+            sequence.Join(GlassImage.transform.DOLocalMove(new Vector3(-365f, -900f, 0f),1f).SetDelay(0.05f));
+            sequence.Join(MountainImage2.transform.DOLocalMove(new Vector3(180f, -870f, 0f),1f).SetDelay(0.1f));
+            sequence.Join(MountainImage1.transform.DOLocalMove(new Vector3(-180f, -900f, 0f),1f).SetDelay(0.15f));
+            sequence.Join(GlasslandImage.transform.DOLocalMove(new Vector3(0f, -700f, 0f),1f).SetDelay(0.2f));
+            sequence.Join(SkyImage.transform.DOLocalMove(new Vector3(0f, -500f, 0f),0.5f).SetDelay(0.25f));
+        /*Color color = SceneImage.color;
         color.a = 0f;
-        SceneImage.color = color;
+        SceneImage.color = color;*/
     }
 
     public enum SCENES
@@ -82,7 +95,14 @@ public class Button : MonoBehaviour
             transform.DOScale(ShrinkScale,ScaleChangeTime)
             .OnComplete(() => 
             {
-                SceneImage.DOFade(1f,1f)
+                /*SceneImage.DOFade(1f,1f)*/
+                var sequence = DOTween.Sequence();
+                sequence.Append(SkyImage.transform.DOLocalMove(new Vector3(0f,0f,0f),0.5f));
+                sequence.Join(GlasslandImage.transform.DOLocalMove(new Vector3(0f, -240f, 0f),1f).SetDelay(0.05f));
+                sequence.Join(MountainImage1.transform.DOLocalMove(new Vector3(-180f, -370f, 0f),1f).SetDelay(0.1f));
+                sequence.Join(MountainImage2.transform.DOLocalMove(new Vector3(180f, -340f, 0f),1f).SetDelay(0.15f));
+                sequence.Join(GlassImage.transform.DOLocalMove(new Vector3(-365f, -150f, 0f),1f).SetDelay(0.2f));
+                sequence.Join(SlimeImage.transform.DOLocalMove(new Vector3(0f, 0f, 0f),1f).SetDelay(0.25f))
                 .OnComplete(()=>
                 {
                     SceneManager.LoadScene($"{scene}");
@@ -95,7 +115,23 @@ public class Button : MonoBehaviour
     {
         transform.DOScale(ExpandingScale,ScaleChangeTime)
         .SetEase(Ease.OutElastic)
-        .OnComplete(() => transform.DOScale(ShrinkScale,ScaleChangeTime))
-        .OnComplete(() => SceneManager.LoadScene($"{scene}"));
+        .OnComplete(() => 
+        {
+            transform.DOScale(ShrinkScale,ScaleChangeTime)
+            .OnComplete(() => 
+            {
+                var sequence = DOTween.Sequence();
+                sequence.Append(SkyImage.transform.DOLocalMove(new Vector3(0f,0f,0f),0.5f));
+                sequence.Join(GlasslandImage.transform.DOLocalMove(new Vector3(0f, -240f, 0f),1f).SetDelay(0.05f));
+                sequence.Join(MountainImage1.transform.DOLocalMove(new Vector3(-180f, -370f, 0f),1f).SetDelay(0.1f));
+                sequence.Join(MountainImage2.transform.DOLocalMove(new Vector3(180f, -340f, 0f),1f).SetDelay(0.15f));
+                sequence.Join(GlassImage.transform.DOLocalMove(new Vector3(-365f, -150f, 0f),1f).SetDelay(0.2f));
+                sequence.Join(SlimeImage.transform.DOLocalMove(new Vector3(0f, 0f, 0f),1f).SetDelay(0.25f))
+                .OnComplete(()=>
+                {
+                    SceneManager.LoadScene($"{scene}");
+                });
+            });
+        });
     }
 }
