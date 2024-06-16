@@ -35,7 +35,7 @@ namespace Assets.MyAssets.InGame.GameManagers
             switch (nextState)
             {
                 case GameState.Initialization:
-                    //StartCoroutine(InitCoroutine());
+                    StartCoroutine(InitCoroutine());
                     break;
                 case GameState.Ready:
                     //Ready();
