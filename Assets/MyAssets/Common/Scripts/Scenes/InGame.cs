@@ -19,11 +19,15 @@ namespace Assets.MyAssets.Common.Scripts.Scenes
         public float Viscosity => _viscosity;
         
         [SerializeField]
+        private SlimeCore _core;
+        
+        [SerializeField]
         private SpecialTypes _specialTypes;
         public SpecialTypes SpecialTypes => _specialTypes;
         
         public void SetArguments(float weight,float size, float viscosity, SpecialTypes specialTypes)
         {
+            //_core.InitializeSlime(new SlimeParameters(weight,size,viscosity), specialTypes);
             _weight = weight;
             _size = size;
             _viscosity = viscosity;

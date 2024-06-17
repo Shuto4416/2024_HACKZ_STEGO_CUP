@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using R3;
 using Assets.MyAssets.InGame.Slimes.Interfaces;
+using UnityEngine.SceneManagement;
 
 namespace Assets.MyAssets.InGame.Slimes
 {
@@ -40,6 +41,19 @@ namespace Assets.MyAssets.InGame.Slimes
             get { return gameStateProvider.CurrentGameState; }
         }
         */
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                Kill();
+            }           
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                SceneManager.LoadScene("Result");
+            }
+            
+        }
 
         public void ClearGame()
         {
