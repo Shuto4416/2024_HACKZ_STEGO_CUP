@@ -19,6 +19,8 @@ namespace Assets.MyAssets.InGame.Slimes
         private SlimeCollision _slimeCollision;
 
         [SerializeField] GameObject _eye;
+        
+        Vector3 _eyePos;
 
         protected override void OnInitialize()
         {
@@ -26,9 +28,6 @@ namespace Assets.MyAssets.InGame.Slimes
             _transforms = gameObject.GetComponentsInChildrenWithoutSelf<Transform>().ToList();
             _slimeStickies = gameObject.GetComponentsInChildrenWithoutSelf<SlimeSticky>().ToList();
         }
-
-        Vector2 _cursorWorldPos;
-        Vector3 _eyePos;
 
         void Update()
         {
@@ -53,14 +52,14 @@ namespace Assets.MyAssets.InGame.Slimes
             
             if (Input.GetKeyDown(KeyCode.W) && _slimeCollision.IsGround)
             {
-                Move((Vector2)transform.position + new Vector2(0, 5), 10, 10, ForceMode2D.Impulse);
+                Move((Vector2)transform.position + new Vector2(0, 5), 15, 10, ForceMode2D.Impulse);
             }
             
-            /*
-            eyePos.x = transforms.Average(x => x.position.x);
-            eyePos.y = transforms.Average(x => x.position.y);
-            eye.transform.position = eyePos;
-            */
+            
+            _eyePos.x = _transforms.Average(x => x.position.x);
+            _eyePos.y = _transforms.Average(x => x.position.y);
+            _eye.transform.position = _eyePos;
+            
         }
 
         void Move(Vector2 destination, float multiplier, int count, ForceMode2D forceMode = ForceMode2D.Force)
