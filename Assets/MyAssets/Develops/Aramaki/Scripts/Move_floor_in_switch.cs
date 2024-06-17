@@ -5,17 +5,17 @@ using Unity.VisualScripting;
 public class Move_floor_in_switch : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    Rigidbody2D MoveFloor;
+    Rigidbody2D MoveFloor_RigidBody;
     Transform Startposition;
-    [SerializeField] private float x;
-    [SerializeField] private float y;
-    [SerializeField] private float time;
-    public Switch @switch;
-    bool once = true;
+    [SerializeField] private float _x; //_x = -36
+    [SerializeField] private float _y;
+    [SerializeField] private float _duration;
+    [SerializeField] private Switch _switch;
+    bool is_first = true;
     void Start()
     {
         Startposition = GetComponent<Transform>();
-        MoveFloor = GetComponent<Rigidbody2D>();
+        MoveFloor_RigidBody = GetComponent<Rigidbody2D>();
         
     }
 
@@ -27,10 +27,10 @@ public class Move_floor_in_switch : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("SlimeController") && once == true) {
-            if(@switch.button == true) {
-                MoveFloor.DOMove(new Vector2(Startposition.position.x + x, Startposition.position.y + y),time).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
-                once = false;
+        if(other.gameObject.CompareTag("SlimeController") && is_first) {
+            if(_switch.is_push) {
+                MoveFloor_RigidBody.DOMove(new Vector2(Startposition.position.x + _x, Startposition.position.y + _y),_duration).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
+                is_first = false;
             }
         }
     }

@@ -4,10 +4,7 @@ using UnityEngine;
 
 namespace Assets.MyAssets.InGame.Slimes
 {
-    /// <summary>
-    /// Slimeの粘着度を管理するスクリプト
-    /// </summary>
-    public class SlimeSticky : MonoBehaviour
+    public class SlimeSticky : BaseSlimeComponent
     {
         [SerializeField] SpringJoint2D _spring;
         LineRenderer _lineRenderer;
@@ -16,7 +13,14 @@ namespace Assets.MyAssets.InGame.Slimes
 
         Vector3[] _lerps;
 
+        private bool _ishoge;
+
         [SerializeField, Range(0, 1)] float _viscosity = 0.5f;
+
+        protected override void OnInitialize()
+        {
+            
+        }
         
         void Start()
         {
@@ -24,6 +28,9 @@ namespace Assets.MyAssets.InGame.Slimes
             _lineRenderer.positionCount = 5;
             _lineRenderer.widthMultiplier = UnityEngine.Random.Range(0.15f, 0.65f);
             _lerps = new Vector3[5];
+
+            _ishoge = false;
+            
             Init();
         }
 

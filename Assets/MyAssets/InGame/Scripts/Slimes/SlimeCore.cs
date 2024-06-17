@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using R3;
 using Assets.MyAssets.InGame.Slimes.Interfaces;
@@ -16,8 +18,19 @@ namespace Assets.MyAssets.InGame.Slimes
         private ReactiveProperty<bool> _isDead = new ReactiveProperty<bool>(false);
         public ReadOnlyReactiveProperty<bool> IsDead { get { return _isDead; } }
         
+        private ReactiveProperty<bool> _isClear = new ReactiveProperty<bool>(false);
+        public ReadOnlyReactiveProperty<bool> IsClear { get { return _isClear; } }
+        
         private SpecialTypes _specialTypes;
         public SpecialTypes SpecialTypes { get { return _specialTypes; } }
+        
+        List<Rigidbody2D> _rigidBody2Ds;
+        
+        private float _defaultMultiplier = 5;
+        public float DefaultMultiplier { get { return _defaultMultiplier; } }
+
+        private float _viscosity = 0f;
+        public float Viscosity { get { return _viscosity; } }
         
         /*
         private IGameStateProvider gameStateProvider;
@@ -27,6 +40,11 @@ namespace Assets.MyAssets.InGame.Slimes
             get { return gameStateProvider.CurrentGameState; }
         }
         */
+
+        public void ClearGame()
+        {
+            _isClear.Value = true;
+        }
         
         private SlimeParameters DefaultSlimeParameter;
         private ReactiveProperty<SlimeParameters> _currentSlimeParameter;
@@ -61,6 +79,8 @@ namespace Assets.MyAssets.InGame.Slimes
         /// </summary>
         public void InitializeSlime(SlimeParameters slimeParameters, SpecialTypes specialTypes)
         {
+            _rigidBody2Ds = gameObject.GetComponentsInChildrenWithoutSelf<Rigidbody2D>().ToList();
+            
             DefaultSlimeParameter = slimeParameters;
             _specialTypes = specialTypes;
             _isInitialize.OnNext(true);
@@ -69,6 +89,23 @@ namespace Assets.MyAssets.InGame.Slimes
             _currentSlimeParameter = new ReactiveProperty<SlimeParameters>(DefaultSlimeParameter);
 
             this.gameObject.transform.localScale *= DefaultSlimeParameter.Size;
+
+            _defaultMultiplier /= DefaultSlimeParameter.Weight + 0.5f;
+            
+            foreach (var _rigidBody2D in _rigidBody2Ds)
+            {
+                _rigidBody2D.mass = DefaultSlimeParameter.Weight;
+            }
+
+            this.gameObject.GetComponent<SpriteRenderer>().material.color = SpecialTypes.ToColor();
+
+            foreach (var spriteRenderer in this.gameObject.GetComponentsInChildrenWithoutSelf<Renderer>().ToList())
+            {
+                spriteRenderer.material.color = SpecialTypes.ToColor();
+            }
+            
+
+            _viscosity = DefaultSlimeParameter.Viscosity;
             
             _isDamaged
                 .Where(_ => _isDamaged.Value)

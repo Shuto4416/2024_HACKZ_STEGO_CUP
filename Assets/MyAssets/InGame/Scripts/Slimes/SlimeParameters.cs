@@ -18,7 +18,7 @@ namespace Assets.MyAssets.InGame.Slimes
         /// スライムの重量
         /// ジャンプの高さなどに影響する
         /// </summary>
-        public int Weight;
+        public float Weight;
         
         /// <summary>
         /// スライムの大きさ
@@ -31,5 +31,13 @@ namespace Assets.MyAssets.InGame.Slimes
         /// 壁とかにくっつけたりする
         /// </summary>
         public float Viscosity;
+
+        public SlimeParameters(int HitPoint, float Weight, float Size, float Viscosity)
+        {
+            this.HitPoint = HitPoint;
+            this.Weight = Weight;
+            this.Size = Size;
+            this.Viscosity = Viscosity;
+        }
     }
 }

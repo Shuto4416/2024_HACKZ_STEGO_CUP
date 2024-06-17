@@ -56,7 +56,7 @@ public class Stickey : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "SlimeController") return;
+        if (collision.gameObject.tag == "SlimeController" || collision.gameObject.tag == "Player") return;
         spring.connectedBody = collision.rigidbody;
         spring.enabled = true;
         spring.connectedAnchor = collision.gameObject.transform.InverseTransformPoint(collision.GetContact(0).point);

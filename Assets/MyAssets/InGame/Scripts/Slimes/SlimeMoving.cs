@@ -9,7 +9,7 @@ namespace Assets.MyAssets.InGame.Slimes
     /// <summary>
     /// Slimeの移動管理クラス
     /// </summary>
-    public class SlimeMoving : MonoBehaviour
+    public class SlimeMoving : BaseSlimeComponent
     {
         List<Rigidbody2D> _rigidBody2Ds;
         List<Transform> _transforms;
@@ -20,9 +20,7 @@ namespace Assets.MyAssets.InGame.Slimes
 
         [SerializeField] GameObject _eye;
 
-        private bool _isGround = true;
-
-        void Start()
+        protected override void OnInitialize()
         {
             _rigidBody2Ds = gameObject.GetComponentsInChildrenWithoutSelf<Rigidbody2D>().ToList();
             _transforms = gameObject.GetComponentsInChildrenWithoutSelf<Transform>().ToList();
@@ -34,10 +32,10 @@ namespace Assets.MyAssets.InGame.Slimes
 
         void Update()
         {
-            var multiplier = 5;
+            var multiplier = SlimeCore.DefaultMultiplier;
             if (!_slimeCollision.IsGround)
             {
-                multiplier /= 2;
+                multiplier = SlimeCore.DefaultMultiplier / 2;
             }
             
             if (Input.GetKey(KeyCode.A))
