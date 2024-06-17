@@ -47,7 +47,7 @@ namespace Assets.MyAssets.InGame.Slimes
             }
             if (Input.GetKey(KeyCode.S))
             {
-                Move((Vector2)transform.position + new Vector2(0, -5), multiplier, 12);
+                Move((Vector2)transform.position + new Vector2(0, -5), multiplier * 1.5f, 12);
             }
             
             if (Input.GetKeyDown(KeyCode.W) && _slimeCollision.IsGround)

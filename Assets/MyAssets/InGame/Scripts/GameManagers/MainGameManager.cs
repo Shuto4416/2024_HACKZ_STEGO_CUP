@@ -3,6 +3,7 @@ using Assets.MyAssets.InGame.Slimes;
 using Assets.MyAssets.Common.Scripts.Scenes;
 using R3;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.MyAssets.InGame.GameManagers
 {
@@ -107,12 +108,12 @@ namespace Assets.MyAssets.InGame.GameManagers
 
         private void Clear()
         {
-            Debug.Log("クリア");
+            SceneManager.LoadScene("Result");
         }
         
         private void GameOver()
         {
-            Debug.Log("ゲームオーバー");
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

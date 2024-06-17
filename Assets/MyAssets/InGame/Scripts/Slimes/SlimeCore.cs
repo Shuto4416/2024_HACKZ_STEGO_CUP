@@ -41,6 +41,14 @@ namespace Assets.MyAssets.InGame.Slimes
         }
         */
 
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                Kill();
+            }
+        }
+
         public void ClearGame()
         {
             _isClear.Value = true;
