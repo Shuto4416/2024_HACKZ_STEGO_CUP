@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Assets.MyAssets.InGame.Slimes;
 using Assets.MyAssets.MakeSlime.Inputs;
 using UnityEngine;
@@ -30,6 +31,12 @@ namespace Assets.MyAssets.MakeSlime
         [SerializeField]
         private List<SpecialTypes> _rightReelSpecialTypes = new List<SpecialTypes>();
 
+        [SerializeField] 
+        private List<GameObject> _flames = new List<GameObject>();
+
+        [SerializeField] 
+        private List<Image>[] _flamesImages = new List<Image>[3];
+
         private int _num;
         
         private IMakeSlimeInputEventProvider _makeSlimeInputEvent;
@@ -41,7 +48,14 @@ namespace Assets.MyAssets.MakeSlime
             List<List<Image>> imageLists = new List<List<Image>>(){_leftReel,_centerReel,_rightReel};
             List<List<SlimeParameters>> slimeParametersLists = new List<List<SlimeParameters>>(){_leftReelSlimeParameters,_centerReelSlimeParameters};
 
+            for (int i = 0; i < 3; i++)
+            {
+                _flamesImages[i] = _flames[i].GetComponentsInChildrenWithoutSelf<Image>().ToList();
+            }
+            
             _makeSlimeInputEvent = this.gameObject.GetComponent<IMakeSlimeInputEventProvider>();
+            
+            ChangeFlameColor(_num);
             
             _makeSlimeInputEvent.UpButton
                 .Where(x => x)
@@ -80,6 +94,7 @@ namespace Assets.MyAssets.MakeSlime
                     {
                         _num = 0;
                     }
+                    ChangeFlameColor(_num);
                 });
             
             _makeSlimeInputEvent.LeftButton
@@ -91,6 +106,8 @@ namespace Assets.MyAssets.MakeSlime
                     {
                         _num = 2;
                     }
+
+                    ChangeFlameColor(_num);
                 });
         }
 
@@ -172,9 +189,31 @@ namespace Assets.MyAssets.MakeSlime
             var center = _centerReelSlimeParameters[0];
             return new SlimeParameters(left.Weight + center.Weight,left.Size + center.Size,left.Viscosity + center.Viscosity);
         }
+        
         public SpecialTypes GetReelSpecialTypesData()
         {
             return _rightReelSpecialTypes[0];
+        }
+
+        private void ChangeFlameColor(int num)
+        {
+            int i = 0;
+            
+            foreach (var _flameImages in _flamesImages)
+            {
+                foreach (var _flameImage in _flameImages)
+                {
+                    if (i == num)
+                    {
+                        _flameImage.color = Color.black;
+                    }
+                    else
+                    {
+                        _flameImage.color = Color.gray;
+                    }
+                }
+                i++;
+            }
         }
     }
 }
