@@ -15,7 +15,7 @@ namespace Assets.MyAssets.InGame.Slimes
 
         private bool _ishoge;
 
-        [SerializeField, Range(0, 1)] float _viscosity = 0.5f;
+        [SerializeField, Range(0, 1)] float _viscosity = 0.4f;
 
         protected override void OnInitialize()
         {

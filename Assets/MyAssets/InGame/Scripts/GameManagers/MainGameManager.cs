@@ -3,6 +3,7 @@ using Assets.MyAssets.InGame.Slimes;
 using Assets.MyAssets.Common.Scripts.Scenes;
 using R3;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.MyAssets.InGame.GameManagers
 {
@@ -56,7 +57,8 @@ namespace Assets.MyAssets.InGame.GameManagers
         
         private IEnumerator InitCoroutine()
         {
-            _core.InitializeSlime(new SlimeParameters(3,_inGame.Weight,_inGame.Size,_inGame.Viscosity), _inGame.SpecialTypes);
+            yield return new WaitForSeconds(0.5f);
+            _core.InitializeSlime(new SlimeParameters(_inGame.Weight,_inGame.Size,_inGame.Viscosity), _inGame.SpecialTypes);
             
             yield return null;
             
@@ -70,14 +72,6 @@ namespace Assets.MyAssets.InGame.GameManagers
 
         private void MainGame()
         {
-            _core.IsDead
-                .Skip(1)
-                .Subscribe(_ =>
-                {
-                    _timeManager.StopCountDown();
-                    _currentState.Value = GameState.GameOver;
-                });
-
             _core.IsClear
                 .Skip(1)
                 .Subscribe(_ =>
@@ -85,6 +79,15 @@ namespace Assets.MyAssets.InGame.GameManagers
                     _timeManager.StopCountDown();
                     _currentState.Value = GameState.Clear;
                 });
+            
+            _core.IsDead
+                .Skip(1)
+                .Subscribe(_ =>
+                {
+                    _timeManager.StopCountDown();
+                    _currentState.Value = GameState.GameOver;
+                });
+            
 
             _timeManager.GameCountDownSecond
                 .Subscribe(x =>
@@ -106,12 +109,12 @@ namespace Assets.MyAssets.InGame.GameManagers
 
         private void Clear()
         {
-            Debug.Log("クリア");
+            SceneManager.LoadScene("Result");
         }
         
         private void GameOver()
         {
-            Debug.Log("ゲームオーバー");
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

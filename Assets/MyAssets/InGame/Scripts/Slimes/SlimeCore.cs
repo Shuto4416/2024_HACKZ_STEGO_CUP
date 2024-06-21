@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 using R3;
 using Assets.MyAssets.InGame.Slimes.Interfaces;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 namespace Assets.MyAssets.InGame.Slimes
 {
@@ -31,7 +33,7 @@ namespace Assets.MyAssets.InGame.Slimes
 
         private float _viscosity = 0f;
         public float Viscosity { get { return _viscosity; } }
-        
+
         /*
         private IGameStateProvider gameStateProvider;
 
@@ -40,6 +42,48 @@ namespace Assets.MyAssets.InGame.Slimes
             get { return gameStateProvider.CurrentGameState; }
         }
         */
+
+        static private SlimeCore player;
+
+        static public SlimeCore Player
+        {
+            get
+            {
+                return player;
+            }
+        }
+
+        static private Collider2D[] colliders;
+        
+        static public Collider2D[] Colliders
+        {
+            get
+            {
+                if (colliders == null)
+                {
+                    colliders = player.GetComponentsInChildren<Collider2D>();
+                }
+                return colliders;
+            }
+        }
+
+        private SlimeCore()
+        {
+            player = this;
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                Kill();
+            }           
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                SceneManager.LoadScene("Result");
+            }
+            
+        }
 
         public void ClearGame()
         {
