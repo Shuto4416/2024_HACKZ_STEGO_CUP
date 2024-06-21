@@ -4,31 +4,37 @@ using System;
 
 public class EnemyCore : MonoBehaviour
 {
-    //public ReadOnlyReactiveProperty<EnemyParameters> CurrentEnemyParameter { get { return currentEnemyParameter; } }
+    public ReadOnlyReactiveProperty<EnemyParameters> CurrentEnemyParameter { get { return currentEnemyParameter; } }
     [SerializeField] private int hitPoint;
-    private EnemyParameters currentEnemyParameter;
+    private ReactiveProperty<EnemyParameters> currentEnemyParameter;
+
+    [SerializeField] private GameObject rootObject;
 
 
 
     public void ApplyDamage(int damage)
     {
-        currentEnemyParameter.HitPoint -= damage;
-        if (currentEnemyParameter.HitPoint <= 0)
+        currentEnemyParameter.Value.HitPoint -= damage;
+        if (currentEnemyParameter.Value.HitPoint <= 0)
         {
-            Destroy(gameObject);
+            Destroy(rootObject);
         }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        currentEnemyParameter = new EnemyParameters(hitPoint);
+        currentEnemyParameter = new ReactiveProperty<EnemyParameters>(new EnemyParameters(hitPoint));
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            this.ApplyDamage(10);
+            Debug.Log(gameObject.name + currentEnemyParameter.Value.HitPoint);
+        }
     }
 }
 
