@@ -9,7 +9,6 @@ public class LizardMan : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator animator;
-    [SerializeField]
     private GameObject player;
     [SerializeField]
     private ParticleSystem sliceParticleL;
@@ -52,6 +51,7 @@ public class LizardMan : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        player = SlimeCore.Player.gameObject;
     }
 
     // Update is called once per frame
@@ -136,7 +136,7 @@ public class LizardMan : MonoBehaviour
         }
         else
         {
-            sliceParticleL.Play();
+            sliceParticleR.Play();
         }
         Observable.Timer(TimeSpan.FromSeconds(0.7)).Take(1).Subscribe(_ =>
         {
