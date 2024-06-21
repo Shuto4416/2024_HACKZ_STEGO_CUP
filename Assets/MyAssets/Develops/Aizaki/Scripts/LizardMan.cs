@@ -60,6 +60,7 @@ public class LizardMan : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyCore.CurrentEnemyParameter.Subscribe(x =>
         {
+            Debug.Log("Damage");
             spriteRenderer.material = damagedMaterial;
             Observable.Timer(System.TimeSpan.FromSeconds(0.1f))
             .Subscribe(_ => spriteRenderer.material = defaultMaterial)
