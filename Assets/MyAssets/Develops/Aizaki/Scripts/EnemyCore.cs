@@ -14,7 +14,7 @@ public class EnemyCore : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
-        currentEnemyParameter.Value.HitPoint -= damage;
+        currentEnemyParameter.Value = new EnemyParameters(hitPoint, currentEnemyParameter.Value.HitPoint - damage);
         if (currentEnemyParameter.Value.HitPoint <= 0)
         {
             Destroy(rootObject);
@@ -41,11 +41,19 @@ public class EnemyCore : MonoBehaviour
 public class EnemyParameters
 {
     public int HitPoint;
+    public int MaxHitPoint;
     public float MoveSpeed;
 
     public EnemyParameters(int hitPoint, float moveSpeed = 1f)
     {
         HitPoint = hitPoint;
+        MaxHitPoint = hitPoint;
+        MoveSpeed = moveSpeed;
+    }
+    public EnemyParameters(int hitPoint,int currentHitPoint, float moveSpeed = 1f)
+    {
+        HitPoint = currentHitPoint;
+        MaxHitPoint = hitPoint;
         MoveSpeed = moveSpeed;
     }
 }
