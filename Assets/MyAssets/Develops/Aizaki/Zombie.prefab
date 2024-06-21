@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 18
+  rootObject: {fileID: 4969453579959119876}
 --- !u!1 &1405837951459749314
 GameObject:
   m_ObjectHideFlags: 0

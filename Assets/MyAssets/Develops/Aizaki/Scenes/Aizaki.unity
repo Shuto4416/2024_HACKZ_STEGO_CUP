@@ -118,6 +118,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &34131961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2071746635625204762, guid: cdeacc8b23294c040af647969742347f, type: 3}
+  m_PrefabInstance: {fileID: 1083157562016337852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &431315973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1058,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem
       objectReference: {fileID: 0}
+    - target: {fileID: 6958921869738094984, guid: cdeacc8b23294c040af647969742347f, type: 3}
+      propertyPath: rootObject
+      value: 
+      objectReference: {fileID: 34131961}
     - target: {fileID: 7492731445392890401, guid: cdeacc8b23294c040af647969742347f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.44
