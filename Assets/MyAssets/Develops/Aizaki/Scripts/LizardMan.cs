@@ -46,12 +46,25 @@ public class LizardMan : MonoBehaviour
         }
     }
 
+    [SerializeField] private EnemyCore enemyCore;
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private Material damagedMaterial;
+    [SerializeField] private Material defaultMaterial;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = SlimeCore.Player.gameObject;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyCore.CurrentEnemyParameter.Subscribe(x =>
+        {
+            spriteRenderer.material = damagedMaterial;
+            Observable.Timer(System.TimeSpan.FromSeconds(0.1f))
+            .Subscribe(_ => spriteRenderer.material = defaultMaterial)
+            .AddTo(this);
+        });
     }
 
     // Update is called once per frame
@@ -141,11 +154,11 @@ public class LizardMan : MonoBehaviour
         Observable.Timer(TimeSpan.FromSeconds(0.7)).Take(1).Subscribe(_ =>
         {
             Condition = 0;
-        });
+        }).AddTo(this);
         Observable.Timer(TimeSpan.FromSeconds(0.1f)).Take(1).Subscribe(_ =>
         {
             sliceCollider.enabled = false;
-        });
+        }).AddTo(this);
     }
 
     public void OnFireCharge()
@@ -158,14 +171,8 @@ public class LizardMan : MonoBehaviour
         
         fireParticle.Play();
         fireCollider.enabled = true; 
-        Observable.Timer(TimeSpan.FromSeconds(0.8f)).Take(1).Subscribe(_ =>
-        {
-            fireCollider.enabled = false;
-        });
-        Observable.Timer(TimeSpan.FromSeconds(1.45f)).Take(1).Subscribe(_ =>
-        {
-            Condition = 0;
-        });
+        Observable.Timer(TimeSpan.FromSeconds(0.8f)).Take(1).Subscribe(_ => { fireCollider.enabled = false; }).AddTo(this);
+        Observable.Timer(TimeSpan.FromSeconds(1.45f)).Take(1).Subscribe(_ => { Condition = 0; }).AddTo(this);
 
     }
 
@@ -195,11 +202,7 @@ public class LizardMan : MonoBehaviour
             if (isOver0 != isOver1) rb.velocity = Vector2.zero;
             isOver0 = transform.position.x >= target.x;
         });
-        Observable.Timer(TimeSpan.FromSeconds(1)).Take(1).Subscribe(_ =>
-        {
-            Debug.Log("Reset");
-            Condition = 0;
-        });
+        Observable.Timer(TimeSpan.FromSeconds(1)).Take(1).Subscribe(_ => { Condition = 0; }).AddTo(this);
 
     }
 
