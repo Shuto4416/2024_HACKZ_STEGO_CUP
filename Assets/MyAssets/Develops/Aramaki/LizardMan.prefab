@@ -14909,6 +14909,9 @@ MonoBehaviour:
   fireParticle: {fileID: 5134563122828890189}
   sliceCollider: {fileID: 6491947036757541647}
   fireCollider: {fileID: 5593170590977912917}
+  enemyCore: {fileID: 0}
+  damagedMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 0}
 --- !u!1 &5829747508693368810
 GameObject:
   m_ObjectHideFlags: 0
@@ -20098,3 +20101,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 50
+  rootObject: {fileID: 0}
