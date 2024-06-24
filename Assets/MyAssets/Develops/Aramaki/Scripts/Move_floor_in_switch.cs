@@ -16,6 +16,7 @@ public class Move_floor_in_switch : MonoBehaviour
     {
         Startposition = GetComponent<Transform>();
         MoveFloor_RigidBody = GetComponent<Rigidbody2D>();
+        //MoveFloor_RigidBody.DOMove(new Vector2(Startposition.position.x + _x, Startposition.position.y + _y),_duration).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
         
     }
 
