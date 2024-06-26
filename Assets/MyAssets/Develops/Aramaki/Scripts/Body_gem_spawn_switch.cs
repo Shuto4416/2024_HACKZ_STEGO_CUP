@@ -3,10 +3,10 @@ using UnityEngine;
 public class Body_gem_spawn_switch : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject Body_gem;
+    public GameObject _bodyGem;
     void Start()
     {
-        Body_gem.SetActive(false);
+        _bodyGem.SetActive(false);
     }
 
     // Update is called once per frame
@@ -17,6 +17,6 @@ public class Body_gem_spawn_switch : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("pusher")) Body_gem.SetActive(true);
+        if(other.gameObject.CompareTag("pusher")) _bodyGem.SetActive(true);
     }
 }
